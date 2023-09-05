@@ -10,4 +10,14 @@ services:
     image: django
     container_name: django_container
     command: python manage.py runserver 0.0.0.0:8000
-    
+    depends_on:
+      - database
+
+  database:
+    image: postgres
+    container_name: django_database
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+     
